@@ -44,19 +44,24 @@
     {
       "id": "day-003",
       "day": 3,
-      "date": "2026-01-17",
-      "title": "This Website",
-      "screenshot": "",
+      "date": "2026-02-20",
+      "title": "Screenshots Slack Bot",
+      "screenshot": "screenshots/day-003.png",
       "timeSpent": "2 hours 30 minutes",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "tags": [
-        "Web App",
-        "Utility"
+        "Automation",
+        "Game",
+        "Utility",
+        "Slack Bot",
+        "Add Images",
+        "Edit Tags",
+        "Search Images"
       ],
-      "whatIBuilt": "The very site you're looking at right now. A static blog/journal to document this entire challenge. Dark game-card aesthetic inspired by Marvel Snap, blog layout inspired by Framer. Pure HTML/CSS/JS with a JSON data file — no frameworks, no build step, deploys to GitHub Pages.",
-      "howItWent": "This was the most ambitious day so far. Lots of design decisions, a full admin interface, three pages. Claude handled the complexity well but required more direction than the simpler day-one builds. The planning phase (asking questions upfront) saved a lot of rework.",
-      "whatILearned": "For complex tasks, investing time in upfront planning with Claude pays dividends. The more context you give about design references and user flows, the less you have to course-correct mid-build.",
-      "biggestChallenge": "Making the card glow system feel genuinely game-like without it looking overdone.",
+      "whatIBuilt": "An internal Slackbot that allows for users to add, search, provide tags and edit tags on images and screenshots of games we play and evaluate.",
+      "howItWent": "Started during lunch break, continued after hours during commander game, this time asking my team members to help test, which was great. Testing highlighted some small changes, and helped me think about actually making it for viable for a team to use.",
+      "whatILearned": "Trying to include more than “MVP” requirements, e.g. “use AI and NLP to support intent from users” as a choice rather than “Keep it simple and easy to build” led to… Issues with sharing my keys again! Claude is good about calling it out, I pasted an error that exposed my key. Maybe we all need some safety training? I got lost on json updates, file updates, key updates in json files, and errors started coming in. I asked claude, it helped, but it still assumes a lot. Be careful not get to get too far ahead of yourself. Testing with others is helpful! Sessions end and claude code can lose context, but seems to be aware of that. No problems to be seen at the moment, but something I’m guessing I should keep an eye on.",
+      "biggestChallenge": "I’ve enjoyed being at my computer and manually \"allowing\" each Claude action, get a sense of what’s going on. But now I want to “allow always” but I’m worried a bit about safety of doing that. Is there a way to know?",
       "link": ""
     },
     {
@@ -64,7 +69,7 @@
       "day": 4,
       "date": "2026-02-21",
       "title": "This Website",
-      "screenshot": "screenshots/day-004.png",
+      "screenshot": "",
       "timeSpent": "30 minutes",
       "difficulty": "easy",
       "tags": [
