@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Claude Code Journal</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <a class="site-logo" href="index.html">
+      <span class="logo-bracket">[</span>CC<span class="logo-bracket">]</span>
+      <span class="logo-text">Claude Code Journal</span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html">All Builds</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="site-main">
+
+    <!-- ---- LOGIN GATE ---- -->
+    <div id="admin-gate" class="admin-gate" style="display:none">
+      <div class="admin-gate__icon">🔐</div>
+      <h1 class="admin-gate__title">Admin Access</h1>
+      <p class="admin-gate__subtitle">Enter the password to manage posts.</p>
+      <form id="login-form" class="admin-gate__form">
+        <input
+          id="login-pwd"
+          type="password"
+          class="form-input"
+          placeholder="Password"
+          autocomplete="current-password"
+          autofocus
+          required
+        >
+        <div id="login-error" class="admin-gate__error" role="alert"></div>
+        <button type="submit" class="btn btn--accent">Unlock →</button>
+      </form>
+    </div>
+
+    <!-- ---- ADMIN UI (revealed after auth) ---- -->
+    <div id="admin-ui" class="admin-ui" style="display:none">
+
+      <div class="admin-header">
+        <div>
+          <h1 class="admin-header__title">Manage Posts</h1>
+          <p class="admin-header__meta" id="admin-meta"></p>
+        </div>
+        <button id="logout-btn" class="btn btn--ghost btn--sm">Log Out</button>
+      </div>
+
+      <!-- Mode tabs -->
+      <div class="admin-tabs">
+        <button id="tab-new"  class="admin-tab active">+ New Post</button>
+        <button id="tab-edit" class="admin-tab">Edit Existing</button>
+      </div>
+
+      <!-- Warning banner -->
+      <div id="admin-warning" class="admin-warning" role="alert"></div>
+
+      <!-- ---- EDIT LIST SECTION ---- -->
+      <div id="edit-list-section" style="display:none">
+        <div id="edit-list" class="edit-list">
+          <!-- Populated by admin.js -->
+        </div>
+      </div>
+
+      <!-- ---- FORM SECTION ---- -->
+      <div id="form-section">
+        <h2 id="form-title" style="margin-bottom:var(--space-lg);font-size:1.1rem;color:var(--text-secondary);font-weight:600">New Post</h2>
+
+        <!-- Validation errors -->
+        <div id="form-errors" class="form-errors" role="alert">
+          <p class="form-errors__title">Please fix the following:</p>
+          <ul></ul>
+        </div>
+
+        <form id="post-form" class="post-form" novalidate>
+
+          <!-- Row: ID (readonly) + Day + Date -->
+          <div class="form-row form-row--3">
+            <div class="form-group">
+              <label class="form-label" for="f-id">Post ID <span title="required">*</span></label>
+              <input id="f-id" name="id" type="text" class="form-input" readonly
+                     style="opacity:0.5;cursor:default" tabindex="-1">
+              <span class="form-hint">Auto-generated from day number</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-day">Day Number <span title="required">*</span></label>
+              <input id="f-day" name="day" type="number" class="form-input"
+                     min="1" placeholder="1" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-date">Date <span title="required">*</span></label>
+              <input id="f-date" name="date" type="date" class="form-input" required>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <div class="form-group">
+            <label class="form-label" for="f-title">Title — Name of the Thing <span title="required">*</span></label>
+            <input id="f-title" name="title" type="text" class="form-input"
+                   placeholder="e.g. Markdown to HTML Converter" required>
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Difficulty -->
+          <div class="form-group">
+            <label class="form-label">Difficulty <span title="required">*</span></label>
+            <div class="diff-options">
+
+              <div class="diff-option" data-diff="easy">
+                <input type="radio" name="difficulty" id="diff-easy" value="easy">
+                <label class="diff-option__label" for="diff-easy">
+                  <span class="diff-option__dot"></span>
+                  Easy
+                </label>
+              </div>
+
+              <div class="diff-option" data-diff="medium">
+                <input type="radio" name="difficulty" id="diff-medium" value="medium" checked>
+                <label class="diff-option__label" for="diff-medium">
+                  <span class="diff-option__dot"></span>
+                  Medium
+                </label>
+              </div>
+
+              <div class="diff-option" data-diff="hard">
+                <input type="radio" name="difficulty" id="diff-hard" value="hard">
+                <label class="diff-option__label" for="diff-hard">
+                  <span class="diff-option__dot"></span>
+                  Hard
+                </label>
+              </div>
+
+              <div class="diff-option" data-diff="legendary">
+                <input type="radio" name="difficulty" id="diff-legendary" value="legendary">
+                <label class="diff-option__label" for="diff-legendary">
+                  <span class="diff-option__dot"></span>
+                  Legendary
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Tags -->
+          <div class="form-group">
+            <label class="form-label">Tags</label>
+            <div class="tags-grid">
+
+              <div class="tag-checkbox">
+                <input type="checkbox" id="tag-webapp" value="Web App">
+                <label class="tag-checkbox__label" for="tag-webapp">Web App</label>
+              </div>
+              <div class="tag-checkbox">
+                <input type="checkbox" id="tag-cli" value="CLI Tool">
+                <label class="tag-checkbox__label" for="tag-cli">CLI Tool</label>
+              </div>
+              <div class="tag-checkbox">
+                <input type="checkbox" id="tag-automation" value="Automation">
+                <label class="tag-checkbox__label" for="tag-automation">Automation</label>
+              </div>
+              <div class="tag-checkbox">
+                <input type="checkbox" id="tag-game" value="Game">
+                <label class="tag-checkbox__label" for="tag-game">Game</label>
+              </div>
+              <div class="tag-checkbox">
+                <input type="checkbox" id="tag-api" value="API">
+                <label class="tag-checkbox__label" for="tag-api">API</label>
+              </div>
+              <div class="tag-checkbox">
+                <input type="checkbox" id="tag-utility" value="Utility">
+                <label class="tag-checkbox__label" for="tag-utility">Utility</label>
+              </div>
+              <div class="tag-checkbox">
+                <input type="checkbox" id="tag-data" value="Data">
+                <label class="tag-checkbox__label" for="tag-data">Data</label>
+              </div>
+              <div class="tag-checkbox">
+                <input type="checkbox" id="tag-aiml" value="AI/ML">
+                <label class="tag-checkbox__label" for="tag-aiml">AI/ML</label>
+              </div>
+
+            </div>
+            <input id="f-custom-tags" type="text" class="form-input"
+                   style="margin-top:var(--space-sm)"
+                   placeholder="Custom tags, comma-separated (e.g. Extension, Script)">
+            <span class="form-hint">Separate multiple custom tags with commas</span>
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Time + Link -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="f-time">Time Spent</label>
+              <input id="f-time" name="timeSpent" type="text" class="form-input"
+                     placeholder="e.g. 45 minutes, 1 hour 20 min">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-link">Link to Try / View It</label>
+              <input id="f-link" name="link" type="url" class="form-input"
+                     placeholder="https://...  (optional)">
+            </div>
+          </div>
+
+          <!-- Screenshot -->
+          <div class="form-group">
+            <label class="form-label" for="f-screenshot">Screenshot Path</label>
+            <input id="f-screenshot" name="screenshot" type="text" class="form-input"
+                   placeholder="screenshots/day-001.png">
+            <span class="form-hint">
+              Step 1: Take a screenshot → Step 2: Save it in the <code>/screenshots/</code> folder with the name above → Step 3: Fill out the rest of this form
+            </span>
+            <div id="screenshot-preview" style="display:none;margin-top:var(--space-sm);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-subtle)">
+              <img id="screenshot-img" src="" alt="Screenshot preview"
+                   style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
+            </div>
+          </div>
+
+          <hr class="form-divider">
+
+          <!-- Content fields -->
+          <div class="form-group">
+            <label class="form-label" for="f-built">What I Built <span title="required">*</span></label>
+            <textarea id="f-built" name="whatIBuilt" class="form-textarea form-textarea--tall"
+                      placeholder="Describe what the thing is and what it does. Be specific — future you will thank you." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-went">How It Went <span title="required">*</span></label>
+            <textarea id="f-went" name="howItWent" class="form-textarea form-textarea--tall"
+                      placeholder="How did the session go? Was Claude helpful? Any back-and-forth? What surprised you?" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-learned">What I Learned <span title="required">*</span></label>
+            <textarea id="f-learned" name="whatILearned" class="form-textarea"
+                      placeholder="Key insights — about Claude Code, about the domain, about yourself as a builder." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-challenge">Biggest Challenge <span title="required">*</span></label>
+            <textarea id="f-challenge" name="biggestChallenge" class="form-textarea"
+                      style="min-height:72px"
+                      placeholder="One or two sentences — what was the hardest part?" required></textarea>
+          </div>
+
+          <!-- Actions -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn--accent btn--lg">Generate JSON →</button>
+            <button type="button" class="btn btn--ghost" onclick="document.getElementById('post-form').reset();document.getElementById('json-preview').classList.remove('visible')">
+              Reset Form
+            </button>
+          </div>
+
+        </form>
+
+        <!-- ---- JSON PREVIEW + DOWNLOAD ---- -->
+        <div id="json-preview" class="json-preview">
+          <p class="json-preview__title">// Generated posts.json</p>
+          <textarea id="json-output" class="json-preview__textarea" readonly></textarea>
+          <div class="json-preview__actions">
+            <button id="download-btn" class="btn btn--accent">⬇ Download posts.json</button>
+          </div>
+          <br>
+          <div class="json-preview__instructions">
+            <strong style="color:var(--text-primary);font-size:0.875rem">What to do next:</strong>
+            <ol>
+              <li>Click <strong>Download posts.json</strong> above</li>
+              <li>Replace the <code>posts.json</code> file in your project folder with the downloaded one</li>
+              <li>Make sure your screenshot is in the <code>/screenshots/</code> folder</li>
+              <li>In your terminal, run:<br>
+                  <code>git add . &amp;&amp; git commit -m "Day XXX: Your Title" &amp;&amp; git push</code></li>
+              <li>GitHub Pages redeploys automatically — check your site in ~1 minute</li>
+            </ol>
+          </div>
+        </div>
+
+      </div><!-- /form-section -->
+
+    </div><!-- /admin-ui -->
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>Claude Code Journal — Admin</p>
+  </footer>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A daily journal of building one thing with Claude Code. Documenting the builds, lessons, and journey.">
+  <title>Claude Code Journal</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <style>
+    /* Ambient background glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(0, 180, 216, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <a class="site-logo" href="index.html">
+      <span class="logo-bracket">[</span>CC<span class="logo-bracket">]</span>
+      <span class="logo-text">Claude Code Journal</span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html">All Builds</a>
+      <a href="admin.html" class="nav-admin">Admin</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="site-main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <p class="hero__eyebrow">// Daily Build Challenge</p>
+      <h1 class="hero__title">One Thing.<br>Every Day.<br>With Claude.</h1>
+      <p class="hero__subtitle">
+        Documenting a personal challenge to build one real thing using Claude Code
+        every single day — the wins, the struggles, and everything learned along the way.
+      </p>
+      <div class="hero__stats">
+        <div class="stat-chip">
+          <span class="stat-chip__icon">⚡</span>
+          <span>Day</span>
+          <span class="stat-chip__value" id="streak-count">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter strip -->
+    <div class="filter-strip" id="filter-strip">
+      <!-- Populated by index.js -->
+    </div>
+
+    <!-- Card grid -->
+    <div class="posts-grid" id="posts-grid" aria-live="polite">
+      <!-- Populated by index.js -->
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>Building one thing per day with Claude Code &nbsp;·&nbsp; No frameworks. Just curiosity.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/index.js"></script>
+
+</body>
+</html>

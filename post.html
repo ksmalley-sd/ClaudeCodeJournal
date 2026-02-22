@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Claude Code Journal — daily build entry">
+
+  <!-- Open Graph — updated dynamically by post.js -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Claude Code Journal">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+
+  <title>Claude Code Journal</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <style>
+    /* Ambient glow matches card difficulty color */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(0, 180, 216, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <a class="site-logo" href="index.html">
+      <span class="logo-bracket">[</span>CC<span class="logo-bracket">]</span>
+      <span class="logo-text">Claude Code Journal</span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html">All Builds</a>
+      <a href="admin.html" class="nav-admin">Admin</a>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="site-main">
+    <!-- post-detail div is populated by post.js -->
+    <div id="post-detail" class="post-detail">
+      <!-- Loading state -->
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px">
+        <div class="spinner"></div>
+        <p>Loading build...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>Building one thing per day with Claude Code &nbsp;·&nbsp; No frameworks. Just curiosity.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/post.js"></script>
+
+</body>
+</html>

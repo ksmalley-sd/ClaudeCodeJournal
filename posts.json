@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "version": 1,
+    "lastUpdated": "2026-02-22",
+    "totalPosts": 4
+  },
+  "posts": [
+    {
+      "id": "day-001",
+      "day": 1,
+      "date": "2026-01-15",
+      "title": "Markdown to HTML Converter",
+      "screenshot": "",
+      "timeSpent": "38 minutes",
+      "difficulty": "easy",
+      "tags": [
+        "CLI Tool",
+        "Utility"
+      ],
+      "whatIBuilt": "A command-line tool that converts Markdown files to clean, styled HTML. You point it at a .md file and it spits out a self-contained HTML file you can open in any browser. Handles headings, lists, code blocks, bold/italic, and links.",
+      "howItWent": "Surprisingly smooth for day one. Claude understood exactly what I wanted from a single prompt. The only friction was getting the CSS styling baked into the output — I had to ask for a second pass to make it look less like 1995.",
+      "whatILearned": "Claude is excellent at well-defined, bounded tasks like this. The clearer the output format, the better the first result. Starting simple builds confidence.",
+      "biggestChallenge": "Getting the output HTML to be truly self-contained (no external dependencies) without it looking terrible.",
+      "link": ""
+    },
+    {
+      "id": "day-002",
+      "day": 2,
+      "date": "2026-01-16",
+      "title": "Daily Standup Slack Bot",
+      "screenshot": "",
+      "timeSpent": "1 hour 15 minutes",
+      "difficulty": "medium",
+      "tags": [
+        "Automation",
+        "API"
+      ],
+      "whatIBuilt": "A Python script that sends a formatted daily standup message to a Slack channel via webhook. Reads a config file to know what channel to post to and when, and uses a simple template so I just fill in what I did yesterday, today, and blockers.",
+      "howItWent": "The Slack webhook integration was easy. The scheduling part (getting it to run at 9am reliably) took more iteration than expected — ended up using a cron job on my Mac rather than trying to build scheduling into the script itself.",
+      "whatILearned": "Scope creep is real even with AI. I kept wanting to add features. Claude will happily build everything you ask for, so you have to be the one to say 'just do the core thing first.'",
+      "biggestChallenge": "Deciding what NOT to build — resisting the urge to add a full config UI.",
+      "link": ""
+    },
+    {
+      "id": "day-003",
+      "day": 3,
+      "date": "2026-01-17",
+      "title": "This Website",
+      "screenshot": "",
+      "timeSpent": "2 hours 30 minutes",
+      "difficulty": "hard",
+      "tags": [
+        "Web App",
+        "Utility"
+      ],
+      "whatIBuilt": "The very site you're looking at right now. A static blog/journal to document this entire challenge. Dark game-card aesthetic inspired by Marvel Snap, blog layout inspired by Framer. Pure HTML/CSS/JS with a JSON data file — no frameworks, no build step, deploys to GitHub Pages.",
+      "howItWent": "This was the most ambitious day so far. Lots of design decisions, a full admin interface, three pages. Claude handled the complexity well but required more direction than the simpler day-one builds. The planning phase (asking questions upfront) saved a lot of rework.",
+      "whatILearned": "For complex tasks, investing time in upfront planning with Claude pays dividends. The more context you give about design references and user flows, the less you have to course-correct mid-build.",
+      "biggestChallenge": "Making the card glow system feel genuinely game-like without it looking overdone.",
+      "link": ""
+    },
+    {
+      "id": "day-004",
+      "day": 4,
+      "date": "2026-02-21",
+      "title": "This Website",
+      "screenshot": "",
+      "timeSpent": "30 minutes",
+      "difficulty": "easy",
+      "tags": [
+        "Web App",
+        "Utility",
+        "Blog",
+        "Documenting",
+        "Journal"
+      ],
+      "whatIBuilt": "The very site you're looking at right now. A static blog/journal to document this entire challenge. Dark game-card aesthetic inspired by Marvel Snap, blog layout inspired by Framer. Pure HTML/CSS/JS with a JSON data file — no frameworks, no build step, deploys to GitHub Pages.",
+      "howItWent": "This was the easiest so far (partially because of what I've learned in previous days). Other than the prompt, no back and forth after the initial feedback I asked Claude to ask me too settle on scope. Claude finished, gave me the command prompts to run and admin password. Having to write up this info has been the most time consuming part.",
+      "whatILearned": "Getting comfortable with simple command line prompts is empowering. Telling Claude to suggest improvements or ask for clarity if needed seems to be really productive.",
+      "biggestChallenge": "Entering in the information for all of the projects to date. (Claude anticipated this, and asked me hjow many I had, to determine if there was a need for a data migration step.) Finding examples of what I wanted the to look like also took a few minutes.",
+      "link": "http://localhost:8000"
+    }
+  ]
+}

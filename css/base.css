@@ -1,0 +1,198 @@
+/* ============================================================
+   BASE.CSS — custom properties, reset, typography
+   ============================================================ */
+
+:root {
+  /* Background layers */
+  --bg-root:         #080c10;
+  --bg-card:         #111820;
+  --bg-card-hover:   #161f2a;
+  --bg-overlay:      #0d1117;
+  --bg-input:        #0d1620;
+  --border-subtle:   rgba(0, 180, 216, 0.12);
+  --border-strong:   rgba(0, 180, 216, 0.35);
+
+  /* Primary accent — electric cyan */
+  --accent:          #00b4d8;
+  --accent-dim:      #0096b4;
+  --accent-glow:     rgba(0, 180, 216, 0.25);
+  --accent-glow-lg:  rgba(0, 180, 216, 0.40);
+
+  /* Text */
+  --text-primary:    #e8f0f7;
+  --text-secondary:  #7a9ab5;
+  --text-muted:      #4a6a85;
+
+  /* Difficulty rarity glow system */
+  --diff-easy:           #00d084;
+  --diff-easy-glow:      rgba(0, 208, 132, 0.35);
+  --diff-easy-glow-lg:   rgba(0, 208, 132, 0.55);
+  --diff-medium:         #0693e3;
+  --diff-medium-glow:    rgba(6, 147, 227, 0.35);
+  --diff-medium-glow-lg: rgba(6, 147, 227, 0.55);
+  --diff-hard:           #9b51e0;
+  --diff-hard-glow:      rgba(155, 81, 224, 0.35);
+  --diff-hard-glow-lg:   rgba(155, 81, 224, 0.55);
+  --diff-legendary:      #ff6900;
+  --diff-legendary-glow:    rgba(255, 105, 0, 0.38);
+  --diff-legendary-glow-lg: rgba(255, 105, 0, 0.58);
+
+  /* Status */
+  --color-success: #00d084;
+  --color-warning: #ffb800;
+  --color-danger:  #ff4444;
+
+  /* Spacing */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+  --space-2xl: 64px;
+
+  /* Border radius */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-card: 14px;
+  --radius-pill: 9999px;
+
+  /* Typography */
+  --font-ui:    'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Transitions */
+  --ease-out:  cubic-bezier(0.23, 1, 0.32, 1);
+  --dur-fast:  150ms;
+  --dur-med:   250ms;
+  --dur-slow:  400ms;
+
+  /* Shadows */
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-lg:   0 8px 32px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--bg-root);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+h3 { font-size: 1.125rem; }
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--dur-fast);
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---- Utility ---- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+/* ---- Focus styles (keyboard navigation) ---- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Scrollbar (dark) ---- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-overlay);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dim);
+}
+
+/* ---- Loading spinner ---- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-subtle);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto var(--space-md);
+}
+
+/* ---- Glow pulse animation (for legendary cards) ---- */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.65; }
+}
