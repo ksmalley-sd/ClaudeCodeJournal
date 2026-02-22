@@ -63,14 +63,20 @@
         <button id="logout-btn" class="btn btn--ghost btn--sm">Log Out</button>
       </div>
 
+      <!-- GitHub Setup Panel -->
+      <div id="gh-setup-panel" class="gh-setup-panel">
+        <!-- Populated by admin.js renderGithubSetup() -->
+      </div>
+
+      <!-- Banners -->
+      <div id="fetch-error-banner" class="admin-banner admin-banner--error" role="alert"></div>
+      <div id="draft-banner"       class="admin-banner admin-banner--draft" role="status"></div>
+
       <!-- Mode tabs -->
       <div class="admin-tabs">
         <button id="tab-new"  class="admin-tab active">+ New Post</button>
         <button id="tab-edit" class="admin-tab">Edit Existing</button>
       </div>
-
-      <!-- Warning banner -->
-      <div id="admin-warning" class="admin-warning" role="alert"></div>
 
       <!-- ---- EDIT LIST SECTION ---- -->
       <div id="edit-list-section" style="display:none">
@@ -94,10 +100,10 @@
           <!-- Row: ID (readonly) + Day + Date -->
           <div class="form-row form-row--3">
             <div class="form-group">
-              <label class="form-label" for="f-id">Post ID <span title="required">*</span></label>
+              <label class="form-label" for="f-id">Post ID</label>
               <input id="f-id" name="id" type="text" class="form-input" readonly
                      style="opacity:0.5;cursor:default" tabindex="-1">
-              <span class="form-hint">Auto-generated from day number</span>
+              <span class="form-hint">Auto-generated</span>
             </div>
             <div class="form-group">
               <label class="form-label" for="f-day">Day Number <span title="required">*</span></label>
@@ -123,39 +129,30 @@
           <div class="form-group">
             <label class="form-label">Difficulty <span title="required">*</span></label>
             <div class="diff-options">
-
               <div class="diff-option" data-diff="easy">
                 <input type="radio" name="difficulty" id="diff-easy" value="easy">
                 <label class="diff-option__label" for="diff-easy">
-                  <span class="diff-option__dot"></span>
-                  Easy
+                  <span class="diff-option__dot"></span>Easy
                 </label>
               </div>
-
               <div class="diff-option" data-diff="medium">
                 <input type="radio" name="difficulty" id="diff-medium" value="medium" checked>
                 <label class="diff-option__label" for="diff-medium">
-                  <span class="diff-option__dot"></span>
-                  Medium
+                  <span class="diff-option__dot"></span>Medium
                 </label>
               </div>
-
               <div class="diff-option" data-diff="hard">
                 <input type="radio" name="difficulty" id="diff-hard" value="hard">
                 <label class="diff-option__label" for="diff-hard">
-                  <span class="diff-option__dot"></span>
-                  Hard
+                  <span class="diff-option__dot"></span>Hard
                 </label>
               </div>
-
               <div class="diff-option" data-diff="legendary">
                 <input type="radio" name="difficulty" id="diff-legendary" value="legendary">
                 <label class="diff-option__label" for="diff-legendary">
-                  <span class="diff-option__dot"></span>
-                  Legendary
+                  <span class="diff-option__dot"></span>Legendary
                 </label>
               </div>
-
             </div>
           </div>
 
@@ -165,7 +162,6 @@
           <div class="form-group">
             <label class="form-label">Tags</label>
             <div class="tags-grid">
-
               <div class="tag-checkbox">
                 <input type="checkbox" id="tag-webapp" value="Web App">
                 <label class="tag-checkbox__label" for="tag-webapp">Web App</label>
@@ -198,12 +194,10 @@
                 <input type="checkbox" id="tag-aiml" value="AI/ML">
                 <label class="tag-checkbox__label" for="tag-aiml">AI/ML</label>
               </div>
-
             </div>
             <input id="f-custom-tags" type="text" class="form-input"
                    style="margin-top:var(--space-sm)"
                    placeholder="Custom tags, comma-separated (e.g. Extension, Script)">
-            <span class="form-hint">Separate multiple custom tags with commas</span>
           </div>
 
           <hr class="form-divider">
@@ -213,23 +207,39 @@
             <div class="form-group">
               <label class="form-label" for="f-time">Time Spent</label>
               <input id="f-time" name="timeSpent" type="text" class="form-input"
-                     placeholder="e.g. 45 minutes, 1 hour 20 min">
+                     placeholder="e.g. 45 minutes, 1 hr 20 min">
             </div>
             <div class="form-group">
               <label class="form-label" for="f-link">Link to Try / View It</label>
               <input id="f-link" name="link" type="url" class="form-input"
-                     placeholder="https://...  (optional)">
+                     placeholder="https://... (optional)">
             </div>
           </div>
 
           <!-- Screenshot -->
           <div class="form-group">
-            <label class="form-label" for="f-screenshot">Screenshot Path</label>
+            <label class="form-label">Screenshot</label>
+
+            <!-- Path field (manual or auto-filled by file upload) -->
             <input id="f-screenshot" name="screenshot" type="text" class="form-input"
-                   placeholder="screenshots/day-001.png">
-            <span class="form-hint">
-              Step 1: Take a screenshot → Step 2: Save it in the <code>/screenshots/</code> folder with the name above → Step 3: Fill out the rest of this form
-            </span>
+                   placeholder="screenshots/day-001.png"
+                   style="margin-bottom:var(--space-sm)">
+
+            <!-- File upload area -->
+            <div id="upload-area" class="upload-area" role="button" tabindex="0"
+                 aria-label="Upload screenshot file">
+              <input id="f-screenshot-file" type="file" accept="image/*"
+                     style="position:absolute;opacity:0;width:0;height:0" tabindex="-1">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" style="color:var(--text-muted)">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <polyline points="17 8 12 3 7 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span id="upload-label">Click or drag a screenshot here</span>
+              <span class="upload-hint">PNG, JPG, GIF, WebP — auto-uploads to GitHub when you publish</span>
+            </div>
+
+            <!-- Live preview -->
             <div id="screenshot-preview" style="display:none;margin-top:var(--space-sm);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-subtle)">
               <img id="screenshot-img" src="" alt="Screenshot preview"
                    style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
@@ -264,33 +274,40 @@
                       placeholder="One or two sentences — what was the hardest part?" required></textarea>
           </div>
 
-          <!-- Actions -->
+          <!-- ---- ACTION BUTTONS ---- -->
           <div class="form-actions">
-            <button type="submit" class="btn btn--accent btn--lg">Generate JSON →</button>
-            <button type="button" class="btn btn--ghost" onclick="document.getElementById('post-form').reset();document.getElementById('json-preview').classList.remove('visible')">
-              Reset Form
+            <!-- Primary: Publish directly to GitHub -->
+            <button type="button" id="publish-btn" class="btn btn--publish btn--lg">
+              ↑ Publish to GitHub
+            </button>
+            <!-- Secondary: Download fallback -->
+            <button type="submit" class="btn btn--ghost">
+              ↓ Download JSON (backup)
+            </button>
+            <button type="button" class="btn btn--ghost btn--sm"
+                    onclick="document.getElementById('post-form').reset();document.getElementById('json-preview').classList.remove('visible')">
+              Reset
             </button>
           </div>
 
         </form>
 
-        <!-- ---- JSON PREVIEW + DOWNLOAD ---- -->
+        <!-- ---- JSON DOWNLOAD PREVIEW (backup flow) ---- -->
         <div id="json-preview" class="json-preview">
-          <p class="json-preview__title">// Generated posts.json</p>
+          <p class="json-preview__title">// Generated posts.json — backup download</p>
           <textarea id="json-output" class="json-preview__textarea" readonly></textarea>
           <div class="json-preview__actions">
             <button id="download-btn" class="btn btn--accent">⬇ Download posts.json</button>
           </div>
           <br>
           <div class="json-preview__instructions">
-            <strong style="color:var(--text-primary);font-size:0.875rem">What to do next:</strong>
+            <strong style="color:var(--text-primary);font-size:0.875rem">If publishing directly to GitHub above, you don't need this.</strong><br>
+            Use the download below only if you prefer manual commits:
             <ol>
               <li>Click <strong>Download posts.json</strong> above</li>
-              <li>Replace the <code>posts.json</code> file in your project folder with the downloaded one</li>
-              <li>Make sure your screenshot is in the <code>/screenshots/</code> folder</li>
-              <li>In your terminal, run:<br>
-                  <code>git add . &amp;&amp; git commit -m "Day XXX: Your Title" &amp;&amp; git push</code></li>
-              <li>GitHub Pages redeploys automatically — check your site in ~1 minute</li>
+              <li>Replace the <code>posts.json</code> file in your project folder</li>
+              <li>Also copy your screenshot into <code>/screenshots/</code></li>
+              <li>Run: <code>git add . &amp;&amp; git commit -m "Day XXX: Title" &amp;&amp; git push</code></li>
             </ol>
           </div>
         </div>
