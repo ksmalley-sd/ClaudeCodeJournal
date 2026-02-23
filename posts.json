@@ -35,7 +35,7 @@
       "title": "\"Who Owns It\" Slack Bot",
       "screenshot": "screenshots/who owns it bot screenshot day-002.png",
       "timeSpent": "1 hour 15 minutes",
-      "difficulty": "medium",
+      "difficulty": "hard",
       "tags": [
         "Automation",
         "API"
