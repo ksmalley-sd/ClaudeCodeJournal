@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": 1,
-    "lastUpdated": "2026-02-23",
-    "totalPosts": 5
+    "lastUpdated": "2026-02-24",
+    "totalPosts": 6
   },
   "posts": [
     {
@@ -112,6 +112,29 @@
       "howItWent": "Started off with asking Claude to find me \"... of the day\" websites to get some inspiration for how it would look and feel. While browsing, I found some fun examples that gave me the idea I went with, Magic cards and a Magic the gathering playmat immersive look and feel. Claude noticed a sentence I didn't finish in my second prompt, and asked me about it to make sure it had it clear before it continued on. It prompted me with a few options, the first option was correct.",
       "whatILearned": "Rules based engine would be easier (and cheaper) than 1 powered by AI. I started with a local only version but told Claude I might want to push it live in the future. This is the first time I tried spending a bit more effort on \"improving the look and feel\" of a website or tool. I tried uploading images I took from examples I found on the web.",
       "biggestChallenge": "After seeing the first version come so close to \"immersive\", going back and forth trying to get it to look good was harder than I thought. Not sure if it's a capability issue for claude, if my prompts are not great, need to play with with \"improving look and feel\"",
+      "link": ""
+    },
+    {
+      "id": "day-006",
+      "day": 6,
+      "date": "2026-02-24",
+      "title": "UI UX Prototyping Tool",
+      "screenshot": "screenshots/proto-genv1.gif",
+      "timeSpent": "1 hour",
+      "difficulty": "easy",
+      "tags": [
+        "Web App",
+        "CLI Tool",
+        "Automation",
+        "Game",
+        "API",
+        "Utility",
+        "AI/ML"
+      ],
+      "whatIBuilt": "A UI / UX lightweight prototyping tool with only this prompt: Build a tool where users upload existing UI screenshots and describe a feature idea, and after providing some options for the user to select from, build a prototype they can browse interactively.",
+      "howItWent": "One of the easiest so far, after getitng set up. Started using Claude CLI on windows! Had to get help from a programmer to get set up. Using Powershell (run as administrator!). Set up bash (hard on windows for some reason?) Some issues with my PATH? All new things, and having a programmer ride shotgun was great, but",
+      "whatILearned": "Knowing how to get my API key from a previous project was critical! Using Claude CLI means a bit less of an easy back and forth, so there wasn't an \n\nI typically write \"please\" and \"thank you\" in most of my prompts and responses. The programmer who helped me get set up explained that it's better to be direct, clear and remove extra things. They can just get in the way of the job getting done.",
+      "biggestChallenge": "Getting the UI to actually match what I uploaded. There are other tools out there that can do generic prototyping and mocks, I was hoping to use one that could leverage our existing UI.",
       "link": ""
     }
   ]
