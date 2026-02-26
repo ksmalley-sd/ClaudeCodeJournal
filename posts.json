@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": 1,
-    "lastUpdated": "2026-02-25",
-    "totalPosts": 7
+    "lastUpdated": "2026-02-26",
+    "totalPosts": 8
   },
   "posts": [
     {
@@ -158,6 +158,26 @@
       "howItWent": "I used Claude CLI again, still getting used to being in a command line. It feels fast but easier to make mistakes in. This time I didn't prompt it to walk me through the things I need to do in a step by step way, and it just said \"put in your API keys\", which is a thing I now know how to do without step by step instructions! First test wasn't working, and it took me a minute to figure out that I should go back to the windows command prompt to look for errors. I found them, pasted them back in to claude and got it fixed.",
       "whatILearned": "Things can get confusing if you are using Powershell, Bash, Command Line, Claude CLI, Claude Desktop. Don't panic! Also don't forget to stop what is running in command line. Ctrl C to end the session! Finally, testing if AI deems something worthy of a timely response is hard!",
       "biggestChallenge": "Testing and making sure the AI component was working. Claude didn't get the right model the first 2 times. I wasn't sure how long to wait or where to look. The 3rd time, it looked like it was stuck, nothing was happening. Turns out the model was working just still deeming my message as not needing a nudge.",
+      "link": ""
+    },
+    {
+      "id": "day-008",
+      "day": 8,
+      "date": "2026-02-25",
+      "title": "Build A Survey Bot",
+      "screenshot": "screenshots/survey-bot-screenshot-v2.png",
+      "timeSpent": "2 hours",
+      "difficulty": "medium",
+      "tags": [
+        "CLI Tool",
+        "API",
+        "Utility",
+        "AI/ML"
+      ],
+      "whatIBuilt": "A bot you can invoke in slack to help create a survey with the ideal questions for your needs",
+      "howItWent": "Started off very easy! It seemed like the least amount of questions I needed to answer and least amount of errors I have seen with a project yet, until... it had an issue outputting the survey options, and it recognized that the error logging was good enough, and that the token max was likely too low to output multiple survey options.",
+      "whatILearned": "The set up of Slack Bots and getting API keys is getting easier with each project, but the steps are still specific and numerous enough that I need to ask for support in how to do it each time. I'm thinking about a way to simplify or automate this part. Also, I explicitly asked Claude to make it so expert market researchers would find the output acceptable. I think adding that to the prompt increased the steps and sophistication of the questions in the survey creation wizard steps. Also, I had previously been switching from Claude CLI in a bash tab to the command prompt tab when i was starting and restarting the bots. This time, I tried to stay in the Claude CLI tool the whole time, and it caused issues (at one point there was apparently 6 bots running at the same time causing issues with session timeouts and connection issues)",
+      "biggestChallenge": "Thinking about testing it, especially at night! I built it with sending info to public slack channels in mind, but that's not ideal for outside work hours, so I had to adjust and rebuild some parts. Trying to let Claude CLI do everything actually backfired a bit.",
       "link": ""
     }
   ]
