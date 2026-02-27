@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": 1,
-    "lastUpdated": "2026-02-26",
-    "totalPosts": 8
+    "lastUpdated": "2026-02-27",
+    "totalPosts": 9
   },
   "posts": [
     {
@@ -178,6 +178,26 @@
       "howItWent": "Started off very easy! It seemed like the least amount of questions I needed to answer and least amount of errors I have seen with a project yet, until... it had an issue outputting the survey options, and it recognized that the error logging was good enough, and that the token max was likely too low to output multiple survey options.",
       "whatILearned": "The set up of Slack Bots and getting API keys is getting easier with each project, but the steps are still specific and numerous enough that I need to ask for support in how to do it each time. I'm thinking about a way to simplify or automate this part. Also, I explicitly asked Claude to make it so expert market researchers would find the output acceptable. I think adding that to the prompt increased the steps and sophistication of the questions in the survey creation wizard steps. Also, I had previously been switching from Claude CLI in a bash tab to the command prompt tab when i was starting and restarting the bots. This time, I tried to stay in the Claude CLI tool the whole time, and it caused issues (at one point there was apparently 6 bots running at the same time causing issues with session timeouts and connection issues)",
       "biggestChallenge": "Thinking about testing it, especially at night! I built it with sending info to public slack channels in mind, but that's not ideal for outside work hours, so I had to adjust and rebuild some parts. Trying to let Claude CLI do everything actually backfired a bit.",
+      "link": ""
+    },
+    {
+      "id": "day-009",
+      "day": 9,
+      "date": "2026-02-26",
+      "title": "Agenda Bot",
+      "screenshot": "screenshots/AgendaBot screenshot.png",
+      "timeSpent": "1 hour",
+      "difficulty": "easy",
+      "tags": [
+        "CLI Tool",
+        "Automation",
+        "API",
+        "Utility"
+      ],
+      "whatIBuilt": "A slack bot that can be used to tag and track messages in slack that should be utilized to create or as part of an agenda for a 1:1 or other meeting.",
+      "howItWent": "Very smooth at the beginning, easier slack bot set up (once it explained using a manifest to create the bot and it's permissions). A little struggle when setting up the google service and api, but with a few clarifying questions I was back on track",
+      "whatILearned": "very simple, but you need to copy your .env.example file into the same folder as your .env file after you added all your keys. and the best way to do that in CLI is \"cp .env.example .env\"\nI don't think I would have thought this was simple, or even understand it 8 days ago.",
+      "biggestChallenge": "Biggest challenges is starting to be API key and Slack Bot setup, not because it's hard, but it's the most amount of time for each of these projects. That and easy testing.",
       "link": ""
     }
   ]
