@@ -216,7 +216,7 @@
         "AI/ML"
       ],
       "whatIBuilt": "A website that can take in text and some guidance and generate 3 sample slide options with the provided text for review or create more if the initial were not satisfactory.",
-      "howItWent": "Straightforward, but Claude CLI does seem to assume at the end I know exaclty what needs to be done for api's, permisisons, etc. I tried running it and it was broken. It didn't have the error handling it needed, so it added that and then it needed to run again, and found a permissions / api issue.",
+      "howItWent": "Straightforward, but Claude CLI does seem to assume at the end I know exactly what needs to be done for API's, permissions, etc. I tried running it and it was broken. It didn't have the error handling it needed, so it added that and then it needed to run again, and found a permissions / API issue.",
       "whatILearned": "Claude built Tools (that I try to make) that are focused on creating UI, UX or visuals, are really not very good. There has to be a better way...",
       "biggestChallenge": "Thinking of a really useful thing to build... might just be the time of night. Don't give up...",
       "link": ""
