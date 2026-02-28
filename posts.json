@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": 1,
-    "lastUpdated": "2026-02-27",
-    "totalPosts": 9
+    "lastUpdated": "2026-02-28",
+    "totalPosts": 10
   },
   "posts": [
     {
@@ -198,6 +198,27 @@
       "howItWent": "Very smooth at the beginning, easier slack bot set up (once it explained using a manifest to create the bot and it's permissions). A little struggle when setting up the google service and api, but with a few clarifying questions I was back on track",
       "whatILearned": "very simple, but you need to copy your .env.example file into the same folder as your .env file after you added all your keys. and the best way to do that in CLI is \"cp .env.example .env\"\nI don't think I would have thought this was simple, or even understand it 8 days ago.",
       "biggestChallenge": "Biggest challenges is starting to be API key and Slack Bot setup, not because it's hard, but it's the most amount of time for each of these projects. That and easy testing.",
+      "link": ""
+    },
+    {
+      "id": "day-010",
+      "day": 10,
+      "date": "2026-02-27",
+      "title": "Slide Designer Website Tool",
+      "screenshot": "screenshots/Slide Designer Screenshotv1.png",
+      "timeSpent": "45 mins",
+      "difficulty": "medium",
+      "tags": [
+        "Web App",
+        "CLI Tool",
+        "Automation",
+        "Utility",
+        "AI/ML"
+      ],
+      "whatIBuilt": "A website that can take in text and some guidance and generate 3 sample slide options with the provided text for review or create more if the initial were not satisfactory.",
+      "howItWent": "Straightforward, but Claude CLI does seem to assume at the end I know exaclty what needs to be done for api's, permisisons, etc. I tried running it and it was broken. It didn't have the error handling it needed, so it added that and then it needed to run again, and found a permissions / api issue.",
+      "whatILearned": "Claude built Tools (that I try to make) that are focused on creating UI, UX or visuals, are really not very good. There has to be a better way...",
+      "biggestChallenge": "Thinking of a really useful thing to build... might just be the time of night. Don't give up...",
       "link": ""
     }
   ]
